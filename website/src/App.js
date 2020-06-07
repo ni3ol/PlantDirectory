@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { Button } from "semantic-ui-react";
 
@@ -11,52 +11,65 @@ import { CardList } from "./CardList";
 
 import "./css/App.css";
 
-const plantData = [
-  {
-    category: "indoor",
-    image: Arum,
-    heading: "Arum Lily",
-    subHeading: "Flower",
-    description: "This is a flower",
-    sun: 'Full sun',
-    water: 'Weekly',
-    feed: 'Bi-weekly'
-  },
-  {
-    category: "indoor",
-    image: Rhus,
-    heading: "Rhus Crenata",
-    subHeading: "Flower",
-    description: "This is a flower",
-    sun: 'Full sun',
-    water: 'Weekly',
-    feed: 'Bi-weekly'
-  },
+// const plantData = [
+//   {
+//     category: "indoor",
+//     image: Arum,
+//     heading: "Arum Lily",
+//     subHeading: "Flower",
+//     description: "This is a flower",
+//     sun: 'Full sun',
+//     water: 'Weekly',
+//     feed: 'Bi-weekly'
+//   },
+//   {
+//     category: "indoor",
+//     image: Rhus,
+//     heading: "Rhus Crenata",
+//     subHeading: "Flower",
+//     description: "This is a flower",
+//     sun: 'Full sun',
+//     water: 'Weekly',
+//     feed: 'Bi-weekly'
+//   },
 
-  {
-    category: "outdoor",
-    image: Dypsis,
-    heading: "Dypsis",
-    subHeading: "Flower",
-    description: "This is a flower",
-    sun: 'Full sun',
-    water: 'Weekly',
-    feed: 'Bi-weekly'
-  },
-  {
-    category: "outdoor",
-    image: plantGif,
-    heading: "Hello hello hello",
-    subHeading: "Flower",
-    description: "This is a flower",
-    sun: 'Full sun',
-    water: 'Weekly',
-    feed: 'Bi-weekly'
-  },
-];
+//   {
+//     category: "outdoor",
+//     image: Dypsis,
+//     heading: "Dypsis",
+//     subHeading: "Flower",
+//     description: "This is a flower",
+//     sun: 'Full sun',
+//     water: 'Weekly',
+//     feed: 'Bi-weekly'
+//   },
+//   {
+//     category: "outdoor",
+//     image: plantGif,
+//     heading: "Hello hello hello",
+//     subHeading: "Flower",
+//     description: "This is a flower",
+//     sun: 'Full sun',
+//     water: 'Weekly',
+//     feed: 'Bi-weekly'
+//   },
+// ];
 
 export const App = () => {
   const [category, setCategory] = useState("all");
+  const [plantData, setPlantData] = useState([]);
+
+  const fetchMessage = async () => {
+    // Use Fetch API to fetch '/api' endpoint
+    const response = await fetch("http://localhost:3000");
+    const json = await response.json();
+    console.log(json)
+    setPlantData(json);
+  };
+
+  useEffect(() => {
+    fetchMessage();
+  }, []);
 
   return (
     <div className="page">
