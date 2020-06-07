@@ -1,0 +1,53 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.card {
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
+  background-color: white;
+  width: 50%;
+  border-radius: 10px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+
+}
+.card:hover {
+  box-shadow: none;
+}
+
+.img {
+  border-radius: 5%;
+  height: 200px !important;
+  width: 200px !important;
+  margin-right: 24px;
+}
+
+.description {
+  padding-top: 12px;
+}
+
+.gridRow {
+  justify-content: space-between !important;
+}
+
+.indicatorWrapper {
+  text-align: center;
+}
+
+.indicator {
+  position: relative !important;;
+  display: inline-block !important;;
+}
+.indicator .img-top {
+  display: none !important;;
+  position: absolute !important;;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
+.indicator:hover .img-top {
+  display: inline !important;;
+}

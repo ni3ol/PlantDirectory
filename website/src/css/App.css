@@ -1,0 +1,42 @@
+.page {
+  background-color: #f5f6f8;
+}
+
+.banner {
+  text-align: center;
+  height: 350px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  font-size: xx-large;
+  
+}
+
+.rotate330 {
+  transform: rotate(330deg);
+  height: 200px;
+}
+
+.rotate30 {
+  transform: rotate(30deg);
+  height: 200px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60px;
+}
+
+.button {
+  margin: 12px !important;
+  width: 150px;
+}
+
+.footer {
+  display: flex;
+  height: 200px;
+  align-items: center;
+  font-size: 18px;
+  justify-content: space-evenly;
+}
