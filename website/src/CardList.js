@@ -5,7 +5,7 @@ export const CardList = (props) => {
   const plants = props.plants;
   return plants.map((plant) => (
     <Card
-      image={plant.image}
+      image={plant.imageUrl}
       description={plant.description}
       heading={plant.heading}
       subHeading={plant.subHeading}

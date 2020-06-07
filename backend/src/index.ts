@@ -1,11 +1,13 @@
 import express, { Request, Response } from "express";
 import { plants } from "./plants";
-import cors from 'cors' 
+import path from 'path'
+import cors from "cors";
 
 const app = express();
 const port = 3000;
 
-app.use(cors())
+app.use(cors());
+app.use("/public", express.static(path.join(__dirname, "public")));
 
 app.get("/", (req: Request, res: Response) => res.send(plants));
 
