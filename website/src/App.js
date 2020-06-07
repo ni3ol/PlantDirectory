@@ -11,17 +11,27 @@ import "./css/App.css";
 export const App = () => {
   const [category, setCategory] = useState("all");
   const [plantData, setPlantData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
-  const fetchMessage = async () => {
+  const fetchPlants = async () => {
+    setIsLoading(true);
     const response = await fetch("http://localhost:3000");
+    if (response.status !== 200) {
+      setHasError(true);
+    }
     const json = await response.json();
-    console.log(json)
     setPlantData(json);
+    setIsLoading(false);
   };
 
   useEffect(() => {
-    fetchMessage();
+    fetchPlants();
   }, []);
+
+  if (hasError) {
+    return <div>There was an error</div>;
+  }
 
   return (
     <div className="page">
@@ -53,13 +63,15 @@ export const App = () => {
           Outdoor
         </Button>
       </div>
-      <CardList
-        plants={
-          category === "all"
-            ? plantData
-            : plantData.filter((plant) => plant.category === category)
-        }
-      />
+      {!isLoading && (
+        <CardList
+          plants={
+            category === "all"
+              ? plantData
+              : plantData.filter((plant) => plant.category === category)
+          }
+        />
+      )}
       <div className="footer">
         <span role="img" aria-label="Footer">
           Created by Niculu ❤️
