@@ -7,6 +7,7 @@ import plantGif from "./plants/smileplant.gif";
 import { CardList } from "./CardList";
 
 import "./css/App.css";
+import { AddModal } from "./AddModal";
 
 export const App = () => {
   const [category, setCategory] = useState("all");
@@ -62,6 +63,7 @@ export const App = () => {
         >
           Outdoor
         </Button>
+        <AddModal/>
       </div>
       {!isLoading && (
         <CardList
